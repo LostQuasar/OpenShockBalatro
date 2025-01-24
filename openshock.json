@@ -1,0 +1,22 @@
+{
+    "id": "openshock",
+    "name": "OpenShock",
+    "author": [
+        "LostQuasar"
+    ],
+    "description": "Shocks you for loosing the game.",
+    "prefix": "os",
+    "main_file": "main.lua",
+    "priority": -20,
+    "badge_colour": "666666",
+    "badge_text_colour": "ffffff",
+    "display_name": "OpenShock",
+    "version": "1.0.0",
+    "dependencies": [
+        "Steamodded (>=1.*)",
+        "Balatro (>=1.*)"
+    ],
+    "conflicts": [],
+    "provides": [],
+    "dump_loc": false
+}
