@@ -31,6 +31,5 @@ while true do
 		if code ~= 200 then
 			love.thread.getChannel('shock_response'):push("HttpsError - " .. code)
 		end
-		love.timer.sleep( 360 )
 	end	
 end

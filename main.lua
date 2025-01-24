@@ -14,6 +14,7 @@ end
 function say(message)
     sendDebugMessage('[OpenShock] - ' .. (message or '???'))
 end
+
 local reset = true
 
 if true then
@@ -31,6 +32,7 @@ if true then
         blocking = false,
         no_delete = true
     }))
+
     G.E_MANAGER:add_event(Event({
         func = function()
             local txt = love.thread.getChannel("shock_response"):pop()
@@ -123,8 +125,7 @@ function create_joker(joker)
 
     -- Sprite position
 
-    local width = 10 -- Width of the spritesheet (in Jokers)
-
+    local width = 2 -- Width of the spritesheet (in Jokers)
 
     joker.position = get_coordinates(joker.pos)
 
@@ -225,8 +226,8 @@ if openshock.config.jokers then
     create_joker(
         {
             name = 'High Voltage',
-            pos = 1,
-            vars = { { xmult = 5 }, { odds = 4 } },
+            pos = 0,
+            vars = { { xmult = 5 }, { odds = 5 } },
             custom_vars = function(self, info_queue, card)
                 return { vars = { card.ability.extra.xmult, G.GAME and G.GAME.probabilities.normal or 1, card.ability.extra.odds } }
             end,
@@ -241,16 +242,22 @@ if openshock.config.jokers then
                         G.GAME.probabilities.normal / card.ability.extra.odds
                     if isActivated then
                         love.thread.getChannel("send_shock"):push("true")
+                        return {
+                            card = card,
+                            message = localize("k_os_zap"),
+                        }
+
+                    else
+                        return {
+                            Xmult_mod = card.ability.extra.xmult,
+                            card = card,
+                            message = localize {
+                                type = 'variable',
+                                key = 'a_xmult',
+                                vars = { card.ability.extra.xmult }
+                            },
+                        }
                     end
-                    return {
-                        Xmult_mod = card.ability.extra.xmult,
-                        card = card,
-                        message = localize {
-                            type = 'variable',
-                            key = 'a_xmult',
-                            vars = { card.ability.extra.xmult }
-                        },
-                    }
                 end
             end
         }
