@@ -11,7 +11,7 @@
     "badge_colour": "666666",
     "badge_text_colour": "ffffff",
     "display_name": "OpenShock",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "dependencies": [
         "Steamodded (>=1.*)",
         "Balatro (>=1.*)"
