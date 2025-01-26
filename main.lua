@@ -17,7 +17,7 @@ end
 
 local reset = true
 
-if true then
+if openshock.config.punish then
     G.E_MANAGER:add_event(Event({
         func = function()
             if reset == true and G.STATE == G.STATES.GAME_OVER then
